@@ -1,0 +1,50 @@
+this.workflowCockpit = workflowCockpit({
+    init: _init,
+    onSubmit: _saveData,
+    onError: _rollback
+});
+
+function _init(data, info) {
+    if (data && data.loadContext) {
+        const { initialVariables } = data.loadContext;
+        console.log("initialVariables: " + JSON.stringify(initialVariables));
+    }
+    
+    info
+        .getUserData()
+        .then(function (user) {
+            document.getElementById("nomFun").setAttribute("value", user.fullname);
+        })
+        .then(function () {
+        info.getPlatformData().then(function (platformData) {
+            console.log(platformData);
+        });
+    });
+}
+
+function _saveData(data, info) {
+    if (!isFormValid()) {
+      document.getElementById("gridCheck").setAttribute("class", "form-check-input is-invalid");
+      throw new Error("Os dados informados não são válidos.");
+    }
+    let newData = {};
+    let selectArea = document.getElementById("areaEmp");
+  
+    // Aba 1
+    newData.nomFun = document.getElementById("nomFun").value;
+    newData.area = selectArea.options[selectArea.selectedIndex].value;
+    newData.dataEntrada = document.getElementById("dataEntrada").value;
+ 
+    console.log(newData);
+    return {
+      formData: newData,
+    };
+}
+
+function _rollback(data, info) {
+    console.log(data.error);
+    if (info.isRequestNew()) {
+       return removeData(data.processInstanceId);
+    }
+    return rollbackData(data.processInstanceId);
+}
