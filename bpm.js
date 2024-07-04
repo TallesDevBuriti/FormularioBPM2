@@ -28,12 +28,12 @@ function _saveData(data, info) {
       throw new Error("Os dados informados não são válidos.");
     }
     let newData = {};
-    let selectArea = document.getElementById("areaEmp");
+    let selectArea = document.querySelector("#areaEmp");
   
     // Aba 1
-    newData.nomFun = document.getElementById("nomFun").value;
+    newData.nomFun = document.querySelector("#nomFun").value;
     newData.area = selectArea.options[selectArea.selectedIndex].value;
-    newData.dataEntrada = document.getElementById("dataEntrada").value;
+    newData.dataEntrada = document.querySelector("#dataEntrada").value;
  
     console.log(newData);
     return {
