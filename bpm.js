@@ -27,8 +27,8 @@ function _saveData(data, info) {
     //let selectArea = document.querySelector("#areaEmp");
   
     // Aba 1
-    newData.nomFun = document.querySelector("#nomFun").value;
     //newData.area = selectArea.options[selectArea.selectedIndex].value;
+    newData.nomFun = document.querySelector("#nomFun").value;
     newData.dataEntrada = document.querySelector("#dataEntrada").value;
  
     console.log(newData);
