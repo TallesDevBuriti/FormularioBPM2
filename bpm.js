@@ -23,10 +23,6 @@ function _init(data, info) {
 }
 
 function _saveData(data, info) {
-    if (!isFormValid()) {
-      document.getElementById("gridCheck").setAttribute("class", "form-check-input is-invalid");
-      throw new Error("Os dados informados não são válidos.");
-    }
     let newData = {};
     let selectArea = document.querySelector("#areaEmp");
   
