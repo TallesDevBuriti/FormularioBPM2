@@ -24,11 +24,11 @@ function _init(data, info) {
 
 function _saveData(data, info) {
     let newData = {};
-    let selectArea = document.querySelector("#areaEmp");
+    //let selectArea = document.querySelector("#areaEmp");
   
     // Aba 1
     newData.nomFun = document.querySelector("#nomFun").value;
-    newData.area = selectArea.options[selectArea.selectedIndex].value;
+    //newData.area = selectArea.options[selectArea.selectedIndex].value;
     newData.dataEntrada = document.querySelector("#dataEntrada").value;
  
     console.log(newData);
